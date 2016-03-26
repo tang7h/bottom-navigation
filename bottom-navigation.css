@@ -1,0 +1,118 @@
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.nav-bottom {
+  width: 100vw;
+  height: 56px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding-bottom: 40px;
+}
+.nav-bottom-item {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .3s;
+  min-width: 64px;
+  max-width: 96px;
+  height: 56px;
+  position: relative;
+}
+/*ripple*/
+.nav-bottom-item::after {
+  content: '';
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  width: 200vw;
+  height: 200vw;
+  margin-left: -100vw;
+  margin-bottom: -100vw;
+  border-radius: 50%;
+  background: tomato;
+  z-index: -2;
+  display: none;
+  animation: nav-ripple .5s;
+  animation-fill-mode: both;
+}
+@keyframes nav-ripple {
+  from{
+    /*opacity: 0;*/
+    transform: scale(0);
+  }
+  to{
+    opacity: 1;
+  }
+}
+.nav-bottom-item:nth-of-type(1)::after {
+  background: #607D8B;
+}
+.nav-bottom-item:nth-of-type(2)::after {
+  background: #009688;
+}
+.nav-bottom-item:nth-of-type(3)::after {
+  background: #795548;
+}
+.nav-bottom-item:nth-of-type(4)::after {
+  background: #3F51B5;
+}
+.nav-bottom-item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  margin-left: -18px;
+  margin-bottom: -18px;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .8s, transform 10s;
+}
+.nav-bottom-item:active::before {
+  transform: scale(5);
+  opacity: .1;
+  transition: opacity .5s .08s, transform 1s .1s ease-out;
+}
+
+.nav-radio {
+  position: absolute;
+  display: none;
+}
+.material-icons {
+  margin-top: 16px;
+  transition: all .2s;
+}
+.nav-bottom-text {
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity .1s;
+}
+.nav-radio:checked + .nav-bottom-item {
+  min-width: 96px;
+  max-width: 168px;
+}
+.nav-radio:checked + .nav-bottom-item::after {
+  display: block;
+  z-index: -1;
+}
+.nav-radio:checked + .nav-bottom-item .material-icons {
+  transform: translateY(-10px);
+}
+.nav-radio:checked + .nav-bottom-item .nav-bottom-text {
+  opacity: 1;
+}
