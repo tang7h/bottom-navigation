@@ -16,7 +16,6 @@ a {
   overflow: hidden;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  padding-bottom: 40px;
 }
 .nav-bottom-item {
   flex: 1 1 auto;
